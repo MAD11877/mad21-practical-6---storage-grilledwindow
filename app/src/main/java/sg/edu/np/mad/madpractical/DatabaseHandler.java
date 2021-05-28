@@ -63,11 +63,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
-                String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
-                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
-                boolean followed = cursor.getInt(cursor.getColumnIndex(COLUMN_FOLLOWED)) == 1;
- 
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String description = cursor.getString(2);
+                boolean followed = cursor.getInt(3) == 1;
+
                 userList.add(new User(name, description, id, followed));
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
