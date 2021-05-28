@@ -67,7 +67,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
                 int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
                 boolean followed = cursor.getInt(cursor.getColumnIndex(COLUMN_FOLLOWED)) == 1;
-
+ 
                 userList.add(new User(name, description, id, followed));
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
