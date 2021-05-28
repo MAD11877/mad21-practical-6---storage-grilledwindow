@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+public class DBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "userDB.db";
     public static final String TABLE_USERS = "users";
@@ -19,8 +19,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_FOLLOWED = "followed";
 
-    public DatabaseHandler(Context context,
-                           SQLiteDatabase.CursorFactory factory)
+    public DBHandler(Context context,
+                     SQLiteDatabase.CursorFactory factory)
     {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }

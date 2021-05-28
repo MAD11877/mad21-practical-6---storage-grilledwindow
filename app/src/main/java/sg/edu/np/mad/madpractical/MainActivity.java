@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "Main Activity";
     private User user;
-    DatabaseHandler mDatabaseHandler;
+    DBHandler mDBHandler;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -24,19 +23,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.v(TAG, "Main Activity Created");
-        mDatabaseHandler = new DatabaseHandler(this, null);
+        mDBHandler = new DBHandler(this, null);
 
-        TextView title = findViewById(R.id.title);
+        TextView name = findViewById(R.id.txtName);
         TextView lorem = findViewById(R.id.lorem);
         Button followBtn = findViewById(R.id.btnFollow);
 
         Intent intent = getIntent();
 
         if (intent != null) {
-            int userIndex = intent.getIntExtra("userIndex", 0);
+            int userIndex = intent.getIntExtra("id", 0);
             user = ListActivity.userList.get(userIndex);
             Log.v("User ", user.name);
-            title.setText(user.name);
+            name.setText(user.name);
             lorem.setText(user.description);
             followBtn.setText(user.isFollowed() ? "Unfollow" : "Follow");
         }
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 user.setFollowed(!user.isFollowed());
-                mDatabaseHandler.updateUser(user);
+                mDBHandler.updateUser(user);
 
                 followBtn.setText(user.isFollowed() ? "Unfollow" : "Follow");
                 Toast toast = Toast.makeText(

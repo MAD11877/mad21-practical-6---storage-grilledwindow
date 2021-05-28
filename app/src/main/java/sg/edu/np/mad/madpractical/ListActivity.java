@@ -5,19 +5,15 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import java.net.CookieHandler;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
     private final static String TAG = "List Activity";
     static ArrayList<User> userList;
-    DatabaseHandler mDatabaseHandler;
+    DBHandler mDBHandler;
     UserAdapter mAdapter;
 
     @Override
@@ -25,8 +21,8 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mDatabaseHandler = new DatabaseHandler(this, null);
-        userList = mDatabaseHandler.getUsers();
+        mDBHandler = new DBHandler(this, null);
+        userList = mDBHandler.getUsers();
 
         Log.v(TAG, "List Activity Created");
 

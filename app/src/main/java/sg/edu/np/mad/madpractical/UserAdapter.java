@@ -56,7 +56,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserViewHolder>{
                     .setPositiveButton("View", (dialog, id) -> {
                         // User clicked View button
                         Intent mainIntent = new Intent(mContext, MainActivity.class);
-                        mainIntent.putExtra("userIndex", user.id - 1);
+                        mainIntent.putExtra("id", user.id - 1);
                         mContext.startActivity(mainIntent);
                     });
 
