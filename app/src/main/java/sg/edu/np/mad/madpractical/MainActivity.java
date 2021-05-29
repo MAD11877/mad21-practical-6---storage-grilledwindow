@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.v(TAG, "Main Activity Created");
-        mDBHandler = new DBHandler(this, null);
+        mDBHandler = new DBHandler(this);
 
         TextView name = findViewById(R.id.txtName);
         TextView lorem = findViewById(R.id.lorem);

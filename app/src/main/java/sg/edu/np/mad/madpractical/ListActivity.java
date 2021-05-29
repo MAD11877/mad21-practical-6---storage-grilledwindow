@@ -21,7 +21,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mDBHandler = new DBHandler(this, null);
+        mDBHandler = new DBHandler(this);
         userList = mDBHandler.getUsers();
 
         Log.v(TAG, "List Activity Created");
